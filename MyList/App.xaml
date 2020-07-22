@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
+             x:Class="MyList.App">
+	<Application.Resources>
+        <!--<ResourceDictionary>
+            <Color x:Key="MainColor">White</Color>
+            <Color x:Key="SecondColor">Orange</Color>
+            <Style x:Key="ItemLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="#8D8D8D"/>
+                <Setter Property="TextDecorations" Value="None"/>
+            </Style>
+            <Style x:Key="ItemLabelStriked" TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="TextDecorations" Value="Strikethrough"/>
+            </Style>
+        </ResourceDictionary>-->
+		<!-- Application resource dictionary -->
+    </Application.Resources>
+</prism:PrismApplication>

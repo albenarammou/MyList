@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             Visual="Material"
+             BackgroundColor="BlanchedAlmond"
+             x:Class="MyList.Views.NewItem">
+    <ContentPage.Resources>
+        <Style TargetType="Entry" x:Key="NewItemEntry">
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="TextColor"  Value="#8D8D8D"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+        <Style TargetType="Button" x:Key="ItemButtons">
+            <Setter Property="HeightRequest" Value="44"/>
+            <Setter Property="CornerRadius" Value="22"/>
+            <Setter Property="HorizontalOptions" Value="Fill"/>
+            <Setter Property="BackgroundColor" Value="OrangeRed"/>
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="BlanchedAlmond"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="#999999"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <!--<Label x:Name="NewItemLable" Text="{Binding NewShoppingItemDescr}"></Label>-->
+            <Entry x:Name="NewItemEntry" Style="{StaticResource NewItemEntry}"  Placeholder="Entry Item"  Text="{Binding NewShoppingItemDescr}" Completed="Entry_Completed">
+            </Entry>
+            <!--<Button Style="{StaticResource ItemButtons}" Text="Hello" IsEnabled="False"></Button>-->
+            <Button Style="{StaticResource ItemButtons}" Text="Cancel" Command="{Binding CancelSelectedCommand}" CommandParameter="CancelSelectedCommand"/>
+            <Button Style="{StaticResource ItemButtons}" Text="Save" Command="{Binding SaveSelectedCommand}" CommandParameter="SaveSelectedCommand"/>
+            <Button Style="{StaticResource ItemButtons}" Text="Delete" Command="{Binding DeleteSelectedCommand}" CommandParameter="DeleteSelectedCommand" />
+        </StackLayout>
+    </ContentPage.Content>
+  
+</ContentPage>
+
+

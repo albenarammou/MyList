@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:b="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             Visual="Material"
+             x:Class="MyList.Views.Items"
+             BackgroundColor="BlanchedAlmond"
+             x:Name="ItemsPage">
+    <ContentPage.Resources>
+        <!--<ResourceDictionary/>-->
+        <Style TargetType="Label" x:Key="ItemLabel">
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="#8D8D8D"/>
+            <!--<Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Unfocused">
+                            <VisualState.Setters>
+                                <Setter Property="TextDecorations" Value="None"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Focused">
+                            <VisualState.Setters>
+                                <Setter Property="TextDecorations" Value="Strikethrough"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>-->
+        </Style>
+        <!--<Style TargetType="CheckBox" x:Key="ItemCheckBox">
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="Color" Value="OrangeRed"/>
+        </Style>-->
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <!--<RefreshView IsRefreshing="{Binding IsRefreshing}"
+             Command="{Binding RefreshCommand}">-->
+
+            <ListView x:Name="MyShoppingList" 
+                      ItemsSource="{Binding AllItems}"
+                      RefreshCommand="{Binding LoadItemsCommand}">
+                <ListView.Behaviors>
+                    <b:EventToCommandBehavior
+                    Command="{Binding ItemTappedCommand}"
+                    EventArgsParameterPath="Item"
+                    EventName="ItemTapped" />
+                </ListView.Behaviors>
+                <ListView.Header>
+                    <StackLayout BackgroundColor="#8D8D8D" Padding="10">
+                        <Label Text="Today Shopping List"  TextColor="BlanchedAlmond" FontSize="Large"></Label>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <!--<StackLayout>
+                            <Entry Placeholder="Entry Item" Completed="Entry_Completed"></Entry>
+                            <Label Text="{Binding .}"></Label>
+                            <TextCell  Detail="{Binding ItemType}" Text="{Binding ItemDescr}"/>
+                        </StackLayout>-->
+                        <!--<ViewCell>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <CheckBox Style="{StaticResource ItemCheckBox}" IsChecked="{Binding Done}" HorizontalOptions="End"></CheckBox>
+                                <Label Style="{StaticResource ItemLabel}" Text="{Binding ItemDescr}"></Label>
+                            </StackLayout>
+                        </ViewCell>-->
+                        <ViewCell>
+                        <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems Mode="Reveal">
+                                <SwipeItemView Command="{Binding Path=BindingContext.CheckCommand, Source={x:Reference Name=ItemsPage}}" 
+                                               CommandParameter="{Binding .}">
+                                    <Grid
+                                        WidthRequest="50"
+                                        BackgroundColor="Coral">
+                                                <BoxView BackgroundColor="Coral"/>
+                                        <!--<Label Text="CHECK" Style="{StaticResource ItemLabel}"/>-->
+                                        <Image Source="check.png"/>
+                                    </Grid>
+                                </SwipeItemView>         
+                            </SwipeItems> 
+                        </SwipeView.LeftItems>    
+                        <SwipeView.RightItems>
+                            <SwipeItems  Mode="Reveal">
+                                <SwipeItemView Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference Name=ItemsPage}}" 
+                                               CommandParameter="{Binding .}">
+                                    <Grid
+                                        WidthRequest="50"
+                                        BackgroundColor="Coral">
+                                        <BoxView BackgroundColor="Coral" />
+                                        <!--<Label Text="DELETE" Style="{StaticResource ItemLabel}"/>-->
+                                        <Image Source="delete.png"/>
+                                    </Grid>
+                                </SwipeItemView>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <SwipeView.Content>
+                            <!-- Content -->
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="BlanchedAlmond">
+                               <!--<CheckBox Style="{StaticResource ItemCheckBox}" IsChecked="{Binding Done}" HorizontalOptions="End"></CheckBox>-->
+                                <Label x:Name="ItemLabel"    Style="{StaticResource ItemLabel}" Text="{Binding ItemDescr}"></Label>
+                                <Image Source="check.png" IsVisible="{Binding Done}"/>
+                            </StackLayout>
+                        </SwipeView.Content>
+                        </SwipeView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <StackLayout BackgroundColor="#8D8D8D" Padding="10" VerticalOptions="EndAndExpand">
+                        <Label Text="Copyright 2020"  TextColor="BlanchedAlmond" FontSize="Large"></Label>
+                    </StackLayout>
+                </ListView.Footer>
+            </ListView>
+            
+            <!--</RefreshView>-->
+            <ImageButton
+                Grid.Row="1"
+                Margin="0,0,10,10"
+                Padding="15"
+                Aspect="AspectFit"
+                BackgroundColor="Gray"
+                Command="{Binding AddNewItemCommand}"
+                CornerRadius="60"
+                HeightRequest="60"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                WidthRequest="60">
+                <ImageButton.Source>
+                    <FontImageSource
+                        FontFamily="fa-solid-900.ttf"
+                        Glyph="&#xf067;"
+                        Color="White" />
+                </ImageButton.Source>
+            </ImageButton>
+        </StackLayout>
+    </ContentPage.Content> 
+</ContentPage>
