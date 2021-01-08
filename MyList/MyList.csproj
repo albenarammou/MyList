@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <ApplicationIcon>MyList.ico</ApplicationIcon>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup>

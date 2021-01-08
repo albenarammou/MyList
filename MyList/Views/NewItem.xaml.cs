@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace MyList.Views
 {
-    public partial class NewItem : ContentPage
+    public partial class NewItem :  ContentPage //TabbedPage  
     {
         public NewItem()
         {
@@ -12,8 +12,6 @@ namespace MyList.Views
 
         protected override void OnAppearing()
         {
-            base.OnAppearing();
-
             NewItemEntry.Focus();
         }
 
@@ -23,6 +21,6 @@ namespace MyList.Views
             if (!String.IsNullOrWhiteSpace(entry.Text))
             { /*startShoppings.Add(entry.Text); */};
         }
-        
+
     }
 }

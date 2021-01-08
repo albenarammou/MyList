@@ -38,10 +38,10 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <!--<Label x:Name="NewItemLable" Text="{Binding NewShoppingItemDescr}"></Label>-->
+            <Label x:Name="NewItemLable" Text="{Binding NewShoppingItemDescr}"></Label>
             <Entry x:Name="NewItemEntry" Style="{StaticResource NewItemEntry}"  Placeholder="Entry Item"  Text="{Binding NewShoppingItemDescr}" Completed="Entry_Completed">
             </Entry>
-            <!--<Button Style="{StaticResource ItemButtons}" Text="Hello" IsEnabled="False"></Button>-->
+            <Button Style="{StaticResource ItemButtons}" Text="Hello" IsEnabled="False"></Button>
             <Button Style="{StaticResource ItemButtons}" Text="Cancel" Command="{Binding CancelSelectedCommand}" CommandParameter="CancelSelectedCommand"/>
             <Button Style="{StaticResource ItemButtons}" Text="Save" Command="{Binding SaveSelectedCommand}" CommandParameter="SaveSelectedCommand"/>
             <Button Style="{StaticResource ItemButtons}" Text="Delete" Command="{Binding DeleteSelectedCommand}" CommandParameter="DeleteSelectedCommand" />
